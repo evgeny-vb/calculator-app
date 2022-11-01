@@ -38,6 +38,9 @@ export const calculationReducer = (state, action) => {
       return newState;
 
     case CALCULATION_ACTIONS.inputOperator:
+      if (state.currentOperand.slice(-1) === ".")
+        return newState;
+
       if (state.previousOperand || state.currentOperand) {
         newState.operator = payload;
         newState.resultHighlight = false;
@@ -56,17 +59,19 @@ export const calculationReducer = (state, action) => {
 
     case CALCULATION_ACTIONS.inputDot:
       newState.resultHighlight = false;
-      if (!state.currentOperand.includes(".")) {
+      if (state.currentOperand === "") {
+        newState.currentOperand = "0.";
+      } else if (!state.currentOperand.includes(".")) {
         newState.currentOperand = state.currentOperand + ".";
       }
       return newState;
 
     case CALCULATION_ACTIONS.inputPercent:
-      newState.currentOperand = percentage(state.currentOperand, state.previousOperand);
+      newState.currentOperand = percentage(state.currentOperand, state.previousOperand).toString();
       return newState;
 
     case CALCULATION_ACTIONS.updateResult:
-      newState.result = calculateResult(state.previousOperand, state.currentOperand, state.operator);
+      newState.result = calculateResult(state.previousOperand, state.currentOperand, state.operator).toString();
       if (!state.previousOperand && !state.currentOperand)
         newState.resultHighlight = false;
       return newState;
