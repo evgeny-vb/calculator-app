@@ -71,7 +71,7 @@ const Calculator = () => {
           <div className={resultClass}>= {isNaN(result) ? "Error" : result}</div>
         </header>
         <div className="calculator-buttons">
-          <button className="btn btn-symbol" onClick={clear}>C</button>
+          <button className="btn btn-symbol" onClick={clear}>{!previousOperand && !currentOperand ? "AC" : "C"}</button>
           {/* theme button */}
           <button className="btn btn-symbol" onClick={switchTheme}>
             <svg
@@ -103,7 +103,6 @@ const Calculator = () => {
               />
             </svg>
           </button>
-
           {/* backspace */}
           <button className="btn btn-symbol" onClick={backspace}>
             <svg
@@ -121,21 +120,19 @@ const Calculator = () => {
               />
             </svg>
           </button>
+          {/* divide */}
           <button className="btn btn-symbol" onClick={() => inputOperator("/")}>
-            <svg
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon--divide"
-            >
-              <path
-                d="M5 10C5 9.83424 5.06585 9.67527 5.18306 9.55806C5.30027 9.44085 5.45924 9.375 5.625 9.375H14.375C14.5408 9.375 14.6997 9.44085 14.8169 9.55806C14.9342 9.67527 15 9.83424 15 10C15 10.1658 14.9342 10.3247 14.8169 10.4419C14.6997 10.5592 14.5408 10.625 14.375 10.625H5.625C5.45924 10.625 5.30027 10.5592 5.18306 10.4419C5.06585 10.3247 5 10.1658 5 10Z"
-                fill="currentColor"
-              ></path>
-              <circle cx="10" cy="7" r="1" fill="currentColor"></circle>
-              <circle cx="10" cy="13" r="1" fill="currentColor"></circle>
+            <svg xmlns="http://www.w3.org/2000/svg" className="icon" viewBox="0 0 24 24" strokeWidth="1.5"
+                 stroke="currentColor" fill="none" strokeLinecap="round"
+                 strokeLinejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <circle fill="currentColor" cx="12" cy="6" r="1"/>
+              <circle fill="currentColor" cx="12" cy="18" r="1"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
             </svg>
           </button>
+
+
           <button className="btn" onClick={() => inputValue(7)}>7</button>
           <button className="btn" onClick={() => inputValue(8)}>8</button>
           <button className="btn" onClick={() => inputValue(9)}>9</button>
@@ -155,6 +152,8 @@ const Calculator = () => {
               />
             </svg>
           </button>
+
+
           <button className="btn" onClick={() => inputValue(4)}>4</button>
           <button className="btn" onClick={() => inputValue(5)}>5</button>
           <button className="btn" onClick={() => inputValue(6)}>6</button>
@@ -174,6 +173,8 @@ const Calculator = () => {
               />
             </svg>
           </button>
+
+
           <button className="btn" onClick={() => inputValue(1)}>1</button>
           <button className="btn" onClick={() => inputValue(2)}>2</button>
           <button className="btn" onClick={() => inputValue(3)}>3</button>
@@ -194,17 +195,15 @@ const Calculator = () => {
             </svg>
           </button>
 
+
           {/* Percentage button */}
           <button className="btn btn-symbol" onClick={inputPercent}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              className="icon"
-            >
-              <path
-                d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"
-              ></path>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                 className="icon">
+              <line x1="19" y1="5" x2="5" y2="19"/>
+              <circle cx="6.5" cy="6.5" r="2.5"/>
+              <circle cx="17.5" cy="17.5" r="2.5"/>
             </svg>
           </button>
 

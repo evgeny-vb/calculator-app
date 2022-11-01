@@ -4,7 +4,7 @@ export const initialCalculationState = {
   previousOperand: "",
   currentOperand: "",
   operator: "",
-  result: "",
+  result: "0",
   resultHighlight: false
 };
 
