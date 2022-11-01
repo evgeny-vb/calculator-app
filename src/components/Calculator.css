@@ -146,6 +146,10 @@
     display: inline;
 }
 
+*:focus {
+    outline: none;
+}
+
 
 /*************************************/
 /* AFTER 768px */

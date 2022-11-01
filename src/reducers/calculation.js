@@ -38,8 +38,10 @@ export const calculationReducer = (state, action) => {
       return newState;
 
     case CALCULATION_ACTIONS.inputOperator:
-      newState.operator = payload;
-      newState.resultHighlight = false;
+      if (state.previousOperand || state.currentOperand) {
+        newState.operator = payload;
+        newState.resultHighlight = false;
+      }
 
       if (!state.previousOperand) {
         newState.previousOperand = state.currentOperand;
@@ -99,5 +101,3 @@ export const mapDispatch = dispatch => ({
   resultHighlight: () => dispatch({type: CALCULATION_ACTIONS.resultHighlight}),
   clear: () => dispatch({type: CALCULATION_ACTIONS.clear}),
 });
-
-export default calculationReducer;
