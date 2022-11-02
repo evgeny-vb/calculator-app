@@ -156,7 +156,7 @@
 /*************************************/
 /* AFTER 768px */
 /*************************************/
-@media (min-width: 48em) {
+@media screen and (min-width: 48em) {
     .calculator-wrapper {
         align-items: center;
     }
@@ -169,7 +169,7 @@
 }
 
 
-@media (max-height: 24em) {
+@media screen and (max-height: 24em) {
     .calculator-body {
         min-height: 10rem;
         flex-shrink: 1;
@@ -179,7 +179,7 @@
 /*************************************/
 /* PHONE LANDSCAPE */
 /*************************************/
-@media only screen and (max-height: 36.98em) and (orientation: landscape) {
+@media screen and (max-height: 36.98em) and (orientation: landscape) {
     .calculator {
         flex-direction: row;
         max-width: none;
