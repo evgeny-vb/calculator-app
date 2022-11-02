@@ -23,7 +23,7 @@
     flex-direction: column;
     background-color: var(--main-bg);
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -62,31 +62,30 @@
     padding: 1.2rem 2.4rem;
     flex-grow: 1;
 
-    font-size: 2rem;
+    font-size: 2.6rem;
     color: var(--color-shade);
 
     background-color: var(--header-bg);
 }
 
 .calculator-formula {
-    min-height: 3.6rem;
-    font-size: 1.8rem;
+    min-height: 4rem;
 }
 
 .calculator-result {
-    min-height: 3.6rem;
+    min-height: 4rem;
 }
 
 .highlight {
     color: var(--color);
-    font-size: 3.6rem;
-    font-weight: 600;
+    font-size: 4rem;
+    font-weight: 500;
 }
 
 /*************************************/
-/* Buttons */
+/* BODY */
 /*************************************/
-.calculator-buttons {
+.calculator-body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 1rem;
@@ -97,8 +96,11 @@
 }
 
 .btn {
-    font-size: 2.4rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.6rem;
     height: 100%;
     width: 100%;
     border: none;
@@ -163,5 +165,23 @@
         max-width: 48em;
         max-height: 72em;
         margin-top: 0;
+    }
+}
+
+
+@media (max-height: 24em) {
+    .calculator-body {
+        min-height: 10rem;
+        flex-shrink: 1;
+    }
+}
+
+/*************************************/
+/* PHONE LANDSCAPE */
+/*************************************/
+@media only screen and (max-height: 36.98em) and (orientation: landscape) {
+    .calculator {
+        flex-direction: row;
+        max-width: none;
     }
 }

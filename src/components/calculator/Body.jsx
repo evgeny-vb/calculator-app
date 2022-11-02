@@ -36,7 +36,7 @@ const Body = ({calculationState, setLightTheme, calculationActions}) => {
   };
 
   return (
-    <div className="calculator-buttons">
+    <div className="calculator-body">
       <button className="btn btn-symbol" onClick={clear}>{!previousOperand && !currentOperand ? "AC" : "C"}</button>
       {/* theme button */}
       <button className="btn btn-symbol" onClick={switchTheme}>

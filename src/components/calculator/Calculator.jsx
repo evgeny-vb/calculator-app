@@ -29,15 +29,14 @@ const Calculator = () => {
   }, []);
 
 
-
-
   const calculatorClass = `calculator ${lightTheme ? "light" : ""}`;
 
   return (
     <main className="calculator-wrapper">
       <section className={calculatorClass}>
         <Header calculationState={calculationState}/>
-        <Body calculationState={calculationState} setLightTheme={setLightTheme} calculationActions={calculationActions}/>
+        <Body calculationState={calculationState} setLightTheme={setLightTheme}
+              calculationActions={calculationActions}/>
       </section>
     </main>
   );

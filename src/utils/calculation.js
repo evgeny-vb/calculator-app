@@ -6,8 +6,8 @@ export const calculatorOperations = {
 };
 
 export const calculateResult = (previousOperand, currentOperand, operator) => {
-  if (!previousOperand && !currentOperand)
-    return 0;
+  if ((!previousOperand && !currentOperand) || currentOperand === "0")
+    return "0";
 
   if (operator && previousOperand && !currentOperand)
     return previousOperand;

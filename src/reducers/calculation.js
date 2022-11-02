@@ -90,6 +90,7 @@ export const calculationReducer = (state, action) => {
       if (state.previousOperand && state.currentOperand && state.operator)
         newState.resultHighlight = true;
       return newState;
+
     case CALCULATION_ACTIONS.clear:
     default:
       return initialCalculationState;
