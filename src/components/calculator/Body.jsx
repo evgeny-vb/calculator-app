@@ -1,45 +1,59 @@
-import React from "react";
+import React, {useCallback, useEffect} from "react";
+import {observer} from "mobx-react-lite";
+import calculatorStore from "../../store/calculatorStore.js";
+import keyDownHandler from "../../utils/keyDownHandler.js";
 
-const Body = ({calculationState, setLightTheme, calculationActions}) => {
-  const {previousOperand, currentOperand} = calculationState;
+const Body = observer(({switchThemeHandler}) => {
+  const {previousOperand, currentOperand, operator} = calculatorStore;
 
-  const switchTheme = () => {
-    setLightTheme(prevState => !prevState);
-  };
+  const keyDownHandlerCB = useCallback((event) => {
+    keyDownHandler(event, calculatorStore);
+  }, [calculatorStore]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownHandlerCB);
+
+    return () => document.removeEventListener("keydown", keyDownHandlerCB);
+  }, []);
+
+  useEffect(() => {
+    calculatorStore.updateResult();
+  }, [previousOperand, currentOperand, operator]);
+
 
   const inputValue = (val) => {
-    calculationActions.inputValue(val);
+    calculatorStore.inputValue(val);
   };
 
   const inputOperator = (val) => {
-    calculationActions.inputOperator(val);
+    calculatorStore.inputOperator(val);
   };
 
   const inputDot = () => {
-    calculationActions.inputDot();
+    calculatorStore.inputDot();
   };
 
   const inputPercent = () => {
-    calculationActions.inputPercent();
+    calculatorStore.inputPercent();
   };
 
   const inputEqual = () => {
-    calculationActions.resultHighlight();
+    calculatorStore.setResultHighlight();
   };
 
   const backspace = () => {
-    calculationActions.backspace();
+    calculatorStore.backspace();
   };
 
   const clear = () => {
-    calculationActions.clear();
+    calculatorStore.clear();
   };
 
   return (
     <div className="calculator-body">
       <button className="btn btn-symbol" onClick={clear}>{!previousOperand && !currentOperand ? "AC" : "C"}</button>
       {/* theme button */}
-      <button className="btn btn-symbol" onClick={switchTheme}>
+      <button className="btn btn-symbol" onClick={switchThemeHandler}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -207,6 +221,6 @@ const Body = ({calculationState, setLightTheme, calculationActions}) => {
       </button>
     </div>
   );
-};
+});
 
 export default Body;

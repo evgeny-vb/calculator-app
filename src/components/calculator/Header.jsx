@@ -1,20 +1,26 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
+import calculatorStore from "../../store/calculatorStore.js";
 
-const Header = (props) => {
-  const {previousOperand, operator, currentOperand, result, resultHighlight} = props.calculationState;
+const Header = observer(() => {
+  const {previousOperand, operator, currentOperand, result, resultHighlight} = calculatorStore;
 
   const formatNumber = (value) => {
     if (value === "")
       return value;
 
+    const fractionLength = 6;
+
     let formattedValue = parseFloat(value).toLocaleString("ru", {
       useGrouping: true,
-      maximumFractionDigits: 6
+      maximumFractionDigits: fractionLength
     });
 
-    // Add back missing . in e.g. 4.
-    if (value.slice(-1) === ".")
-      formattedValue += "."
+    // Add back missing .0 in e.g. 4.0
+    const match = value.match(/\.\d*?(0*)$/)
+
+    if (match)
+      formattedValue += (/[1-9]/).test(match[0]) ? match[1] : match[0].slice(0, fractionLength+1)
 
     return formattedValue;
   };
@@ -27,9 +33,9 @@ const Header = (props) => {
   return (
     <header className="calculator-header">
       <div className={formulaClass}>{displayFormula}</div>
-      <div className={resultClass}>= {isNaN(result) ? "Error" : formatNumber(result)}</div>
+      <div className={resultClass}>= {formatNumber(result)}</div>
     </header>
   );
-};
+});
 
 export default Header;
