@@ -26,6 +26,7 @@ class CalculatorStore {
       this.currentOperand = `${prevCurrentOperand}${num}`;
     }
     this.resultHighlight = false;
+    this.updateResult();
   }
 
 
@@ -47,6 +48,7 @@ class CalculatorStore {
       this.previousOperand = this.result;
       this.currentOperand = "";
     }
+    this.updateResult();
   }
 
 
@@ -62,6 +64,7 @@ class CalculatorStore {
 
   inputPercent() {
     this.currentOperand = percentage(parseFloat(this.currentOperand), parseFloat(this.previousOperand)).toString();
+    this.updateResult();
   }
 
 
@@ -80,6 +83,7 @@ class CalculatorStore {
     } else {
       this.currentOperand = this.currentOperand.slice(0, -1);
     }
+    this.updateResult();
   }
 
 
@@ -95,6 +99,7 @@ class CalculatorStore {
     this.operator = "";
     this.result = "0";
     this.resultHighlight = false;
+    this.updateResult();
   }
 
 }

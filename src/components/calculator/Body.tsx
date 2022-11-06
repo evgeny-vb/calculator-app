@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Body: React.FC<Props> = observer(({switchThemeHandler}) => {
-  const {previousOperand, currentOperand, operator} = calculatorStore;
+  const {previousOperand, currentOperand} = calculatorStore;
 
   const keyDownHandlerCB = useCallback((event: KeyboardEvent) => {
     keyDownHandler(event);
@@ -19,10 +19,6 @@ const Body: React.FC<Props> = observer(({switchThemeHandler}) => {
 
     return () => document.removeEventListener("keydown", keyDownHandlerCB);
   }, []);
-
-  useEffect(() => {
-    calculatorStore.updateResult();
-  }, [previousOperand, currentOperand, operator]);
 
 
   const inputNumber = (num: number) => {
