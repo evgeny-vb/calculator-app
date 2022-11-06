@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import "./Calculator.css";
-import Header from "./Header.jsx";
-import Body from "./Body.jsx";
+import Header from "./Header";
+import Body from "./Body";
 
 const Calculator = () => {
   const [lightTheme, setLightTheme] = useState(false);

@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx";
-import {calculateResult, percentage} from "../utils/calculation.js";
+import {calculateResult, percentage} from "../utils/calculation";
 
 
 class CalculatorStore {
@@ -14,7 +14,7 @@ class CalculatorStore {
   }
 
 
-  inputValue(value) {
+  inputNumber(num: number | string) {
     const prevCurrentOperand = this.currentOperand;
     if (this.resultHighlight) {
       this.previousOperand = "";
@@ -22,19 +22,19 @@ class CalculatorStore {
       this.operator = "";
     }
 
-    if (value !== 0 || prevCurrentOperand !== "0") {
-      this.currentOperand = `${prevCurrentOperand}${value}`;
+    if (num !== 0 || prevCurrentOperand !== "0") {
+      this.currentOperand = `${prevCurrentOperand}${num}`;
     }
     this.resultHighlight = false;
   }
 
 
-  inputOperator(value) {
+  inputOperator(operator: string) {
     if (this.currentOperand.slice(-1) === ".")
       return;
 
     if (this.previousOperand || this.currentOperand) {
-      this.operator = value;
+      this.operator = operator;
       this.resultHighlight = false;
     }
 
@@ -61,12 +61,12 @@ class CalculatorStore {
 
 
   inputPercent() {
-    this.currentOperand = percentage(this.currentOperand, this.previousOperand).toString();
+    this.currentOperand = percentage(parseFloat(this.currentOperand), parseFloat(this.previousOperand)).toString();
   }
 
 
   updateResult() {
-    this.result = calculateResult(this.previousOperand, this.currentOperand, this.operator).toString();
+    this.result = calculateResult(parseFloat(this.previousOperand), parseFloat(this.currentOperand), this.operator).toString();
     if (!this.previousOperand && !this.currentOperand)
       this.resultHighlight = false;
   }

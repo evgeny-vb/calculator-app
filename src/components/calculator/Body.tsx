@@ -1,13 +1,17 @@
 import React, {useCallback, useEffect} from "react";
 import {observer} from "mobx-react-lite";
-import calculatorStore from "../../store/calculatorStore.js";
-import keyDownHandler from "../../utils/keyDownHandler.js";
+import calculatorStore from "../../store/calculatorStore";
+import keyDownHandler from "../../utils/keyDownHandler";
 
-const Body = observer(({switchThemeHandler}) => {
+type Props = {
+  switchThemeHandler: () => void;
+}
+
+const Body: React.FC<Props> = observer(({switchThemeHandler}) => {
   const {previousOperand, currentOperand, operator} = calculatorStore;
 
-  const keyDownHandlerCB = useCallback((event) => {
-    keyDownHandler(event, calculatorStore);
+  const keyDownHandlerCB = useCallback((event: KeyboardEvent) => {
+    keyDownHandler(event);
   }, [calculatorStore]);
 
   useEffect(() => {
@@ -21,12 +25,12 @@ const Body = observer(({switchThemeHandler}) => {
   }, [previousOperand, currentOperand, operator]);
 
 
-  const inputValue = (val) => {
-    calculatorStore.inputValue(val);
+  const inputNumber = (num: number) => {
+    calculatorStore.inputNumber(num);
   };
 
-  const inputOperator = (val) => {
-    calculatorStore.inputOperator(val);
+  const inputOperator = (operator: string) => {
+    calculatorStore.inputOperator(operator);
   };
 
   const inputDot = () => {
@@ -113,9 +117,9 @@ const Body = observer(({switchThemeHandler}) => {
       </button>
 
 
-      <button className="btn" onClick={() => inputValue(7)}>7</button>
-      <button className="btn" onClick={() => inputValue(8)}>8</button>
-      <button className="btn" onClick={() => inputValue(9)}>9</button>
+      <button className="btn" onClick={() => inputNumber(7)}>7</button>
+      <button className="btn" onClick={() => inputNumber(8)}>8</button>
+      <button className="btn" onClick={() => inputNumber(9)}>9</button>
       <button className="btn btn-symbol" onClick={() => inputOperator("*")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -134,9 +138,9 @@ const Body = observer(({switchThemeHandler}) => {
       </button>
 
 
-      <button className="btn" onClick={() => inputValue(4)}>4</button>
-      <button className="btn" onClick={() => inputValue(5)}>5</button>
-      <button className="btn" onClick={() => inputValue(6)}>6</button>
+      <button className="btn" onClick={() => inputNumber(4)}>4</button>
+      <button className="btn" onClick={() => inputNumber(5)}>5</button>
+      <button className="btn" onClick={() => inputNumber(6)}>6</button>
       <button className="btn btn-symbol" onClick={() => inputOperator("-")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -155,9 +159,9 @@ const Body = observer(({switchThemeHandler}) => {
       </button>
 
 
-      <button className="btn" onClick={() => inputValue(1)}>1</button>
-      <button className="btn" onClick={() => inputValue(2)}>2</button>
-      <button className="btn" onClick={() => inputValue(3)}>3</button>
+      <button className="btn" onClick={() => inputNumber(1)}>1</button>
+      <button className="btn" onClick={() => inputNumber(2)}>2</button>
+      <button className="btn" onClick={() => inputNumber(3)}>3</button>
       <button className="btn btn-symbol" onClick={() => inputOperator("+")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +191,7 @@ const Body = observer(({switchThemeHandler}) => {
         </svg>
       </button>
 
-      <button className="btn btn-symbol" onClick={() => inputValue(0)}>0</button>
+      <button className="btn btn-symbol" onClick={() => inputNumber(0)}>0</button>
 
       {/* Dot button */}
       <button className="btn btn-symbol" onClick={inputDot}>

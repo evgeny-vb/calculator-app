@@ -1,29 +1,30 @@
-import {calculatorOperations} from "./calculation.js";
+import {calculatorOperations} from "./calculation";
+import calculatorStore from "../store/calculatorStore";
 
-const keyDownHandler = (event, calculationActions) => {
+const keyDownHandler = (event: KeyboardEvent) => {
   let {key} = event;
 
   if (key === "Enter") {
     event.preventDefault();
-    calculationActions.resultHighlight();
+    calculatorStore.setResultHighlight();
   } else if ((/^\d/).test(key)) {
     event.preventDefault();
-    calculationActions.inputValue(parseInt(key, 10));
+    calculatorStore.inputNumber(parseInt(key, 10));
   } else if (key in calculatorOperations) {
     event.preventDefault();
-    calculationActions.inputOperator(key);
+    calculatorStore.inputOperator(key);
   } else if (key === ".") {
     event.preventDefault();
-    calculationActions.inputDot();
+    calculatorStore.inputDot();
   } else if (key === "%") {
     event.preventDefault();
-    calculationActions.inputPercent();
+    calculatorStore.inputPercent();
   } else if (key === "Backspace") {
     event.preventDefault();
-    calculationActions.backspace();
+    calculatorStore.backspace();
   } else if (["Clear", "Escape", "Delete"].includes(key)) {
     event.preventDefault();
-    calculationActions.clear();
+    calculatorStore.clear();
   }
 };
 
