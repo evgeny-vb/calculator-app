@@ -15,11 +15,8 @@ import PercentageSvg from "../assets/PercentageSvg";
 import DotSvg from "../assets/DotSvg";
 import EqualSvg from "../assets/EqualSvg";
 
-type Props = {
-  toggleThemeHandler: () => void;
-}
 
-const Body: React.FC<Props> = observer(({toggleThemeHandler}) => {
+const Body = observer(() => {
   const {previousOperand, currentOperand} = calculatorStore;
 
   const keyDownHandlerCB = useCallback((event: KeyboardEvent) => {
@@ -32,6 +29,9 @@ const Body: React.FC<Props> = observer(({toggleThemeHandler}) => {
     return () => document.removeEventListener("keydown", keyDownHandlerCB);
   }, []);
 
+  const toggleThemeHandler = () => {
+    UiState.toggleTheme();
+  };
 
   const inputNumber = (num: number) => {
     calculatorStore.inputNumber(num);
