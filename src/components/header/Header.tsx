@@ -1,6 +1,7 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 import calculatorStore from "../../store/calculatorStore";
+import {CalculatorFormula, CalculatorHeader, CalculatorResult} from "./Header.styles";
 
 const Header = observer(() => {
   const {previousOperand, operator, currentOperand, result, resultHighlight} = calculatorStore;
@@ -27,14 +28,11 @@ const Header = observer(() => {
 
   const displayFormula = [formatNumber(previousOperand), operator, formatNumber(currentOperand)].join(" ");
 
-  const formulaClass = `calculator-formula ${!resultHighlight ? "highlight" : ""}`;
-  const resultClass = `calculator-result ${resultHighlight ? "highlight" : ""}`;
-
   return (
-    <header className="calculator-header">
-      <div className={formulaClass}>{displayFormula}</div>
-      <div className={resultClass}>= {formatNumber(result)}</div>
-    </header>
+    <CalculatorHeader>
+      <CalculatorFormula highlight={!resultHighlight}>{displayFormula}</CalculatorFormula>
+      <CalculatorResult highlight={resultHighlight}>= {formatNumber(result)}</CalculatorResult>
+    </CalculatorHeader>
   );
 });
 

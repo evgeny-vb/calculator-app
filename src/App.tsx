@@ -1,11 +1,17 @@
-import './App.css'
+import {ThemeProvider} from "styled-components";
 import Calculator from "./components/calculator/Calculator";
+import {GlobalStyles} from "./GlobalStyles";
+import UiState from "./store/uiState";
+import {observer} from "mobx-react-lite";
 
-function App() {
+const App = observer(() => {
 
   return (
-    <Calculator/>
+    <ThemeProvider theme={UiState.theme}>
+      <GlobalStyles/>
+      <Calculator/>
+    </ThemeProvider>
   )
-}
+})
 
 export default App

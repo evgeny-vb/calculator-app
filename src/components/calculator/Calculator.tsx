@@ -1,24 +1,20 @@
-import {useState} from "react";
-import "./Calculator.css";
-import Header from "./Header";
-import Body from "./Body";
+import Header from "../header/Header";
+import Body from "../body/Body";
+import UiState from "../../store/uiState";
+import {CalculatorWrapper, Calculator as CalculatorStyled} from "./Calculator.styles";
 
 const Calculator = () => {
-  const [lightTheme, setLightTheme] = useState(false);
-
-  const switchThemeHandler = () => {
-    setLightTheme(prevState => !prevState);
+  const toggleThemeHandler = () => {
+    UiState.toggleTheme();
   };
 
-  const calculatorClass = `calculator ${lightTheme ? "light" : ""}`;
-
   return (
-    <main className="calculator-wrapper">
-      <section className={calculatorClass}>
+    <CalculatorWrapper>
+      <CalculatorStyled>
         <Header/>
-        <Body switchThemeHandler={switchThemeHandler}/>
-      </section>
-    </main>
+        <Body toggleThemeHandler={toggleThemeHandler}/>
+      </CalculatorStyled>
+    </CalculatorWrapper>
   );
 };
 
