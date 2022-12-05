@@ -8,6 +8,7 @@ export const CalculatorBody = styled.div`
   flex-grow: 1;
   gap: 0.4rem;
   min-height: 38.4rem;
+  transition: all 0.3s;
 
   @media screen and (max-height: 24em) {
     min-height: 10rem;

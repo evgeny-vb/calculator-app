@@ -19,6 +19,7 @@ export const CalculatorHeader = styled.header`
   color: ${({theme}) => theme.colors.textShade};
 
   background-color: ${({theme}) => theme.colors.headerBackground};
+  transition: all 0.3s;
 `
 
 type CalculatorFormulaProps = {
