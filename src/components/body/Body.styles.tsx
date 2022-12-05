@@ -48,16 +48,3 @@ export const ButtonEqual = styled(Button)`
   :hover {
     background-color: ${({theme}) => theme.colors.btnEqualHover};
 `
-
-export const Icon = styled.svg`
-  width: 32px;
-  height: 32px;
-`
-
-type IconThemeProps = {
-  isDisplay: boolean
-}
-
-export const IconTheme = styled(Icon)<IconThemeProps>`
-  display: ${({isDisplay}) => isDisplay ? "none" : "inline"}
-`
