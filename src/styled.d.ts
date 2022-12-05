@@ -5,16 +5,15 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     name: string;
     colors: {
-      mainBg: string;
-      headerBg: string;
-      buttonsBg: string;
-      btnBg: string;
-      btnHover: string;
-      btnEqual: string;
-      btnEqualHover: string;
-      color: string;
-      colorShade: string;
-      symbolColor: string;
+      headerBackground: string;
+      bodyBackground: string;
+      buttonBackground: string;
+      buttonHover: string;
+      buttonEqual: string;
+      buttonEqualHover: string;
+      textMain: string;
+      textShade: string;
+      symbol: string;
     }
   }
 }

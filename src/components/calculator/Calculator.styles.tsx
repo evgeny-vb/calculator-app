@@ -13,7 +13,6 @@ export const CalculatorWrapper = styled.main`
 export const Calculator = styled.section`
   display: flex;
   flex-direction: column;
-  background-color: ${({theme}) => theme.colors.mainBg};
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -22,7 +21,7 @@ export const Calculator = styled.section`
   min-width: 23em;
   margin-top: auto;
   overflow: hidden;
-  color: ${({theme}) => theme.colors.color};
+  color: ${({theme}) => theme.colors.textMain};
 
   /* AFTER 768px */
   @media screen and (min-width: 48em) {

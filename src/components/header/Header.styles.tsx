@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 
 const highlightStyles = css`
-  color: ${({theme}) => theme.colors.color};
+  color: ${({theme}) => theme.colors.textMain};
   font-size: 4rem;
   font-weight: 500;
 `
@@ -16,9 +16,9 @@ export const CalculatorHeader = styled.header`
   flex-grow: 1;
 
   font-size: 2.6rem;
-  color: ${({theme}) => theme.colors.colorShade};
+  color: ${({theme}) => theme.colors.textShade};
 
-  background-color: ${({theme}) => theme.colors.headerBg};
+  background-color: ${({theme}) => theme.colors.headerBackground};
 `
 
 type CalculatorFormulaProps = {

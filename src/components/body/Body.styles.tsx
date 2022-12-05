@@ -4,7 +4,7 @@ export const CalculatorBody = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 1rem;
-  background-color: ${({theme}) => theme.colors.buttonsBg};
+  background-color: ${({theme}) => theme.colors.bodyBackground};
   flex-grow: 1;
   gap: 0.4rem;
   min-height: 38.4rem;
@@ -24,27 +24,27 @@ export const Button = styled.button`
   height: 100%;
   width: 100%;
   border: none;
-  color: ${({theme}) => theme.colors.color};
+  color: ${({theme}) => theme.colors.textMain};
   cursor: pointer;
   border-radius: 15px;
-  background-color: ${({theme}) => theme.colors.btnBg};
+  background-color: ${({theme}) => theme.colors.buttonBackground};
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
 
   :hover {
     transform: scale(108%);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-    background-color: ${({theme}) => theme.colors.btnHover};
+    background-color: ${({theme}) => theme.colors.buttonHover};
 `
 
 export const ButtonSymbol = styled(Button)`
-  color: ${({theme}) => theme.colors.symbolColor};
+  color: ${({theme}) => theme.colors.symbol};
 `
 
 export const ButtonEqual = styled(Button)`
   height: 100%;
-  background-color: ${({theme}) => theme.colors.btnEqual};
+  background-color: ${({theme}) => theme.colors.buttonEqual};
 
   :hover {
-    background-color: ${({theme}) => theme.colors.btnEqualHover};
+    background-color: ${({theme}) => theme.colors.buttonEqualHover};
 `
