@@ -26,7 +26,9 @@ const Body = observer(() => {
   useEffect(() => {
     document.addEventListener("keydown", keyDownHandlerCB);
 
-    return () => document.removeEventListener("keydown", keyDownHandlerCB);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandlerCB);
+    };
   }, []);
 
   const toggleThemeHandler = () => {
